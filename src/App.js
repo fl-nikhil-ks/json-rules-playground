@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { AlertCircle, CheckCircle, Plus, Trash2, Play, X, Code, Database } from 'lucide-react';
+import { Engine } from 'json-rules-engine';
 
 // Default rules for the app
 const DEFAULT_RULES = [
@@ -13227,8 +13228,6 @@ const RulesEngineApp = () => {
       const fact = convertFactsToObject();
       setError('');
 
-      const { Engine } = await import('https://cdn.skypack.dev/json-rules-engine@6.5.0');
-      
       const engine = new Engine([], { allowUndefinedFacts: true });
       
       engine.addOperator('inArray', (factValue, jsonValue) => {
